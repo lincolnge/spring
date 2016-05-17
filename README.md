@@ -19,12 +19,16 @@
     Default locale: en_US, platform encoding: UTF-8
     OS name: "mac os x", version: "10.11.3", arch: "x86_64", family: "mac"
 
+### 如果环境有问题
+
+    $ jenv local oracle64-1.8.0.74
+    $ jenv enable-plugin maven
+
 ## 运行：
 
 在 `~/gs-handling-form-submission/initial` 目录下
 
-    $ ./gradlew build
-    $ mvn spring-boot:run
+    $ ./gradlew build && mvn spring-boot:run
 
 gs-rest-service 项目同理。
 
