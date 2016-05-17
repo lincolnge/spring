@@ -1,5 +1,8 @@
 package hello;
 
+/**
+ * 定义 Greeting
+ */
 public class Greeting {
 
     private long id;
@@ -7,11 +10,6 @@ public class Greeting {
 
     public long getId() {
         return id;
-    }
-
-    public Greeting(long id, String content) {
-        this.id = id;
-        this.content = content;
     }
 
     public void setId(long id) {
@@ -25,5 +23,4 @@ public class Greeting {
     public void setContent(String content) {
         this.content = content;
     }
-
 }
