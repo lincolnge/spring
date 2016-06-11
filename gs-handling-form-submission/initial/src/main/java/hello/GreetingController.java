@@ -1,6 +1,5 @@
 package hello;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,11 +30,17 @@ public class GreetingController {
      * 获取 json 数据
      * @param name
      * @return model
+     *
+     * $ curl localhost:8080/api/test2.json
+     * {"value":"World"}
+     * $ curl localhost:8080/api/test2.json?name=2
+     * {"value":"2"}
+     * 不限制 method
      */
+    @ResponseBody
     @RequestMapping("/api/test2.json")
-    public @ResponseBody ModelMap greeting(@RequestParam(value="name", defaultValue="World") String name) {
+    public ModelMap greeting(@RequestParam(value="name", defaultValue="World") String name) {
         ModelMap model = new ModelMap();
-        System.out.println("hello");
         System.out.println("value " + name);
         model.addAttribute("value", name);
         return model;
@@ -46,9 +51,14 @@ public class GreetingController {
      * 发送 form 数据
      * @param greeting
      * @return String
+     *
+     * POST FORM
+     * $ curl -d "id=2&content=Maoyan" http://localhost:8080/api/test.form
+     * id=2&content=Maoyan
      */
+    @ResponseBody
     @RequestMapping(value="/api/test.form", method=RequestMethod.POST)
-    public @ResponseBody String printForm(Greeting greeting) {
+    public String printForm(Greeting greeting) {
         System.out.println("Hello, greeting form");
         System.out.println(greeting.getContent());
         System.out.println(greeting.getId());
@@ -62,11 +72,18 @@ public class GreetingController {
      * 发送 json 数据
      * @param model
      * @return ModalMap
+     *
+     * $ curl -H "Content-Type: application/json" -X POST -d '{"id":13313,"content":"dfasdf"}' http://localhost:8080/api/test.json
+     * {"id":13313,"content":"dfasdf"}
      */
+    @ResponseBody
     @RequestMapping(value="/api/test.json")
-    public @ResponseBody ModelMap printJson(@RequestBody ModelMap model) {
+    public ModelMap printJson(@RequestBody ModelMap model) {
         System.out.println("Hello, model");
         System.out.println(model);
+        // String message = "Welcome to home page";
+        // model.addAttribute("message", message);
+        System.out.println(model.get("id")); // if not id, it will be null
         return model;
     }
 
