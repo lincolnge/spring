@@ -26,7 +26,13 @@
 
 ## 运行：
 
-在 `~/gs-handling-form-submission/initial` 目录下
+在根目录下，运行
+
+    $ ./run.sh
+    # 或
+    $ ./run.sh 1
+
+或者在 `~/gs-handling-form-submission/initial` 目录下
 
     $ ./gradlew build && mvn spring-boot:run
 
@@ -34,5 +40,5 @@ gs-rest-service 项目同理。
 
 ## 详情请查看：
 
-gs-rest-service. <https://spring.io/guides/gs/rest-service/>
-gs-handling-form-submission. <https://spring.io/guides/gs/handling-form-submission/>
+- gs-rest-service. <https://spring.io/guides/gs/rest-service/>
+- gs-handling-form-submission. <https://spring.io/guides/gs/handling-form-submission/>
